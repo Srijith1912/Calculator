@@ -15,7 +15,7 @@ A simple C++ console-based calculator project as part of my DSA internship prepa
 - Integrate with DSA-CPP repo for comprehensive learning.
 
 ## Contact
-- LinkedIn: [https://www.linkedin.com/in/srijithmulupuri/]
-- Email: [smulupur@asu.edu]
+- LinkedIn: https://www.linkedin.com/in/srijithmulupuri/
+- Email: smulupur@asu.edu
 
 *Last Updated: May 23, 2025*
