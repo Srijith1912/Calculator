@@ -9,6 +9,10 @@ A simple C++ console-based calculator project as part of my DSA internship prepa
   - Started with basic addition and subtraction functionality.
   - File: `0 - Calculator.cpp`
   - Technologies: C++, STL.
+ 
+  - **Day 2 (May 24)**:
+  - Added multiplication and division functionality.
+  - File: `0 - Calculator.cpp`
 
 ## Future Plans
 - Add multiplication, division, and stack-based expression evaluation.
