@@ -1,98 +1,44 @@
-/******************************************************************************
-
-                              Online C++ Compiler.
-               Code, Compile, Run and Debug C++ program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
 #include <iostream>
-#include <stdio.h>
-#include <limits>
-
+#include <stack>
+#include <sstream>
 using namespace std;
 
-int main()
-{
-    double n1, n2, res;
-    char operation;
-    bool flag = true;
+int main(){
     
+    string expr;
+    cout << "Enter expression (eg: 3 + 5 * 2 =): " << endl;
+    getline(cin, expr);
+    stack<double> numbers;
+    stack<char> operators;
+    stringstream ss(expr);
+    string token;
     
-    std::cout << "Welcome to Srijith's Calculator!\n" << endl;
+    while (ss >> token){
+        if (token == "=") break;
+        if (token != "+" && token != "-" && token != "*" && token != "/"){
+            numbers.push(stod(token));
+        }
+        else{
+            operators.push(token[0]);
+        }
+    }
     
-    do{
+    while(!operators.empty()){
+        double b = numbers.top();
+        numbers.pop();
+        double a = numbers.top();
+        numbers.pop();
+        char op = operators.top();
+        operators.pop();
         
-        cout << "Enter your first number for the calculation" << endl;
-        while (!(cin >> n1)){
-            cout << "Please enter a valid number" << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
-        
-        cout << "Enter your second number for the calculation" << endl;
-        while (!(cin >> n2)){
-            cout << "Please enter a valid number" << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
-        
-        cout << "Enter the operation you'd like between the numbers (+/-/*/ '/') or q to Quit" << endl;
-        cin >> operation;
-        
-        switch(operation){
-            
-            case '+':{
-                res = n1+n2;
-                cout << "The result of your operation between the two numbers is: " << res << endl << endl;
-                break;
-            }
-            
-            case '-':{
-                res = n1-n2;
-                cout << "The result of your operation between the two numbers is: " << res << endl << endl;
-                break;
-            }
-            
-            case '*':{
-                res = n1*n2;
-                cout << "The result of your operation between the two numbers is: " << res << endl << endl;
-                break;
-            }
-            
-            case '/':{
-                
-                if(n2 == 0){
-                    cout << "Error! Division can't be done by 0." << endl;
-                }
-                
-                res = n1/n2;
-                cout << "The result of your operation between the two numbers is: " << res << endl << endl;
-                break;
-                
-            }
-            
-            case 'q':{
-                flag = false;
-                cout << "\nYou have quit Srijith's calculator." << endl;
-                break;
-            }
-            
-            case 'Q':{
-                flag = false;
-                cout << "\nYou have quit Srijith's calculator." << endl;
-                break;
-            }
-            
-            default:
-                cout << "Please select a valid operation" << endl;
-                continue;
-            
-            
-        }
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        if (op == '+') numbers.push(a+b);
+        else if (op == '-') numbers.push(a-b);
+        else if (op == '*') numbers.push(a*b);
+        else if (op == '/') numbers.push(a/b);
 
-    } while(flag);
-
+    }
+    
+    cout << "Result: " << numbers.top() << endl;
     return 0;
+    
 }
