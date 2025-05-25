@@ -37,7 +37,7 @@ int main()
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         
-        cout << "Enter the operation you'd like between the numbers (+/-) or q to Quit" << endl;
+        cout << "Enter the operation you'd like between the numbers (+/-/*/ '/') or q to Quit" << endl;
         cin >> operation;
         
         switch(operation){
@@ -52,6 +52,24 @@ int main()
                 res = n1-n2;
                 cout << "The result of your operation between the two numbers is: " << res << endl << endl;
                 break;
+            }
+            
+            case '*':{
+                res = n1*n2;
+                cout << "The result of your operation between the two numbers is: " << res << endl << endl;
+                break;
+            }
+            
+            case '/':{
+                
+                if(n2 == 0){
+                    cout << "Error! Division can't be done by 0." << endl;
+                }
+                
+                res = n1/n2;
+                cout << "The result of your operation between the two numbers is: " << res << endl << endl;
+                break;
+                
             }
             
             case 'q':{
