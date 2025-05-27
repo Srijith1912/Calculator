@@ -17,6 +17,10 @@ A simple C++ console-based calculator project as part of my DSA internship prepa
   - **Day 3 (May 25)**:
   - Added basic stack-based expression evaluation.
   - File: `0 - Calculator.cpp`
+ 
+  - **Day 4 (May 26)**:
+  - Enhanced stack-based evaluation with full operator precedence.
+  - File: `0 - Calculator.cpp`
 
 ## Future Plans
 - Add multiplication, division, and stack-based expression evaluation.
