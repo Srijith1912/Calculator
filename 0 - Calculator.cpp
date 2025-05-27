@@ -3,6 +3,12 @@
 #include <sstream>
 using namespace std;
 
+int order(char op){
+    if(op == '*' || op == '/') return 2;
+    if (op == '+' || op == '-') return 1;
+    return 0;
+}
+
 int main(){
     
     string expr;
@@ -19,6 +25,28 @@ int main(){
             numbers.push(stod(token));
         }
         else{
+            while(!operators.empty() && order(operators.top()) >= order(token[0])){
+                double b = numbers.top();
+                numbers.pop();
+                double a = numbers.top();
+                numbers.pop();
+                char op = operators.top();
+                operators.pop();
+            
+                if (op == '+') numbers.push(a+b);
+                else if (op == '-') numbers.push(a-b);
+                else if (op == '*') numbers.push(a*b);
+                
+                else if (op == '/') {
+                    if (b == 0) { 
+                        cout << "Error: Division by zero!" << endl; 
+                        return 1; 
+                    }
+                    else numbers.push(a / b);
+                    }
+                    
+                }
+            
             operators.push(token[0]);
         }
     }
@@ -34,7 +62,14 @@ int main(){
         if (op == '+') numbers.push(a+b);
         else if (op == '-') numbers.push(a-b);
         else if (op == '*') numbers.push(a*b);
-        else if (op == '/') numbers.push(a/b);
+        
+        else if (op == '/') {
+            if (b == 0) { 
+                cout << "Error: Division by zero!" << endl; 
+                return 1; 
+            }
+            else numbers.push(a / b);
+            }
 
     }
     
